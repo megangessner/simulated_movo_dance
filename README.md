@@ -97,7 +97,11 @@ Recall we are using dynamic motion primitives as our basis for constructing arbi
 ### simulated_movo_dance
 This repo!! Clone it in your `movo_ws/src` directory. A walkthrough of the code is here, with a voiceover of my design decisions and how to use the scripts:
 
-[Click to watch demo here](https://drive.google.com/file/d/1VDtAUTy5kOnUiqUhon3uYPjPtaFXTCOE/view?usp=sharing)
+[Click to watch demo part 1 here](https://drive.google.com/file/d/1Ti4_bHnetZilJbNc1pfgGvobXB7Cde78/view?usp=sharing)
+[Click to watch demo part 2 here](https://drive.google.com/file/d/1ymyAAYiPOmSGNXkUGbnBMQC2OaFwADIw/view?usp=sharing)
+[Click to watch demo part 3 here](https://drive.google.com/file/d/1MZrfApPEMGDvxcgESDMhujMUPBeh9Kn1/view?usp=sharing)
+
+(Sorry this is split into multiple parts... I used a free trial of a screen recorder)
 
 ### BTrack and libsamplerate
 BTrack is a library for doing real-time beat tracking using onset detection and hypothesis evaluation: https://github.com/adamstark/BTrack It's written in cpp but it has a python module which I call on in my code. 
