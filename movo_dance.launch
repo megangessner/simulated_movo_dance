@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+ <launch>
+ 	
+    <!-- Bring up the platform in sim with all models, controllers, sensors estimates -->
+    <node pkg="si_utils" type="timed_roslaunch"
+        args="1 movo_gazebo movo_dance_zone.launch"
+        name="sim_bringup" output="screen"/>
+
+
+    <!-- Bring up the moveit -->
+    <node if="$(optenv MOVO_HAS_KINOVA_ARM_6DOF false)" pkg="si_utils" type="timed_roslaunch"
+        args="10 movo_moveit_config movo_moveit_planning_execution.launch sim:=true info:=true"
+        name="moveit_bringup" output="screen"/>
+        
+    <node if="$(optenv MOVO_HAS_KINOVA_ARM_7DOF false)" pkg="si_utils" type="timed_roslaunch"
+        args="10 movo_7dof_moveit_config movo_moveit_planning_execution.launch sim:=true info:=true"
+        name="moveit_bringup" output="screen"/>
+        
+    <!-- Bring up the demo -->
+    <node pkg="si_utils" type="timed_roslaunch"
+        args="18 movo_gazebo init_sim_inplace.xml"
+        name="init_sim_bringup" output="screen"/>
+
+        
+    <!-- Bring up the demo -->
+    <node pkg="si_utils" type="timed_roslaunch"
+        args="40 movo_viz view_robot.launch function:=demo"
+        name="viz_bringup" output="screen"/>
+
+    <!-- Broadcast joint states on appropriate topics for jaco controllers i.e. jaco_jtas_test.py-->
+    <node pkg="movo_dance" name="arm_state_publisher" type="arm_state_publisher.py" output="screen"/>
+
+    <include file="$(find dmp)/launch/dmp.launch"></include>
+
+</launch>
